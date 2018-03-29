@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Music Player</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="album_image_desc">album image</string>
+    <string name="shuffle_image_desc">shuffle image</string>
+    <string name="previous_image_desc">previous_image_desc</string>
+    <string name="play_image_desc">play_image_desc</string>
+    <string name="next_image_desc">next image</string>
+    <string name="repeat_image_desc">repeat image</string>
+</resources>
