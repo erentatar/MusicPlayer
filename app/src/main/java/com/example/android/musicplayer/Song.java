@@ -1,5 +1,8 @@
 package com.example.android.musicplayer;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Song {
 
     private static final int NO_IMAGE_PROVIDED = -1;
@@ -7,6 +10,10 @@ public class Song {
     private String songName;
     private String artistName;
     private int imageResourceId = NO_IMAGE_PROVIDED;
+
+    public Song() {
+
+    }
 
     public Song(int songId, String songName, String artistName) {
         this.songId = songId;

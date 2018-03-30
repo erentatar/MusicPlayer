@@ -2,10 +2,13 @@ package com.example.android.musicplayer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -17,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Create a list of songs
-        final ArrayList<Song> songs = new ArrayList<Song>();
+        final ArrayList<Song> songs = new ArrayList<>();
         songs.add(new Song(1, "Telli Turnam", "Cem Adrian", R.drawable.ic_music_note_white_48dp));
         songs.add(new Song(2, "Elastic Heart", "Sia", R.drawable.ic_music_note_white_48dp));
         songs.add(new Song(3, "What About Us", "Pink", R.drawable.ic_music_note_white_48dp));
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
         // activity_main.xml layout file.
-        ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = findViewById(R.id.list);
 
         // Make the {@link ListView} use the {@link SongAdapter} we created above, so that the
         // {@link ListView} will display list items for each {@link Song} in the list.
@@ -49,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 // Create a new intent to open the {@link PlayActivity}
                 Intent playIntent = new Intent(MainActivity.this, PlayActivity.class);
 
-                playIntent.putExtra("mSongName", songs.get(position).getSongName());
-                playIntent.putExtra("mArtistName", songs.get(position).getArtistName());
+                Parcelable wrapped = Parcels.wrap(songs.get(position));
+                playIntent.putExtra("song", wrapped);
                 // Start the new activity
                 startActivity(playIntent);
             }
